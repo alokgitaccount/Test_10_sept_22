@@ -60,7 +60,7 @@ print(final_output)
 '''
 st = "ab@#cd!ef"
 
-
+'''
 class Solution:
     def reverseOnlyLetters(self, S):
         if not S:
@@ -86,7 +86,7 @@ class Solution:
 
 ob1 = Solution()
 print(ob1.reverseOnlyLetters(st))
-
+'''
 '''
 4. some_list = ["a", "b", "c", "d", "n", "a", "b", "m", "n", "m"]
    #findout elements duplicate count output in  dict format
@@ -104,6 +104,7 @@ print(dict)
 5.5. # t1 = (1, 2, 3, "a", "c") 
    # t2 = ("b", "d", 9, 8, 7)
    # Output: (10,10,10,"ab","cd")
+'''
 '''
 t1 = (1, 2, 3, "a", "c")
 t2 = ("b", "d", 9, 8, 7)
@@ -130,7 +131,7 @@ for char1 in t1:
         indx2+=1
 print(lst)
 
-
+'''
 '''
 6  #Write a Python program to remove leading zeros from an IP address.
 			  inp = "216.08.094.196"
@@ -155,6 +156,160 @@ print(string)
 '''
 l = [1, 2, [3, 4, [5, 6]], 7, 8, [9, [10]]]
 output=[]
+final_out=[]
 for item in l:
     if type(item)==list:
-        print(item)
+        output.extend(item)
+    else:
+        output.append(item)
+for item2 in output:
+    if type(item2)==list:
+        final_out.extend(item2)
+    else:
+        final_out.append(item2)
+print(final_out)
+
+'''
+8. Load sample content in text file.
+   Read data and find
+    1. No of lines in file
+	2. No of words in each line 
+	3. No of chars in each line
+	4. No of vowels and consonants
+	5. No of special chars linewise and total 
+'''
+lines = ["my name is alok kumar rathore \n  my empid is 378 \n i am from t06 batch "]
+with open("C:\\Users\\Alok Kumar Rathore\\Desktop\\vn2_t06_378_file.txt", 'w') as fp:
+    for line in lines:
+        fp.write(line)
+        fp.write('\n')
+fp.close()
+
+
+with open(r"C:\\Users\\Alok Kumar Rathore\\Desktop\\vn2_t06_378_file.txt", 'r') as fp:
+    lines = len(fp.readlines())
+    print('Total Number of lines:', lines)
+
+number_of_words = 0
+
+
+file1 = open("C:\\Users\\Alok Kumar Rathore\\Desktop\\vn2_t06_378_file.txt", "r")
+
+word_count = 0
+i = 0
+str1 = ""
+print("Contents of file " + "C:\\Users\\Alok Kumar Rathore\\Desktop\\vn2_t06_378_file.txt" + " are:")
+
+# display and count number of  words in each line of text file
+for line in file1:
+    i += 1
+    print(line, end='')
+    words_in_line = len(line.split())
+    str1 = str1 + "Words in Line No: " + str(i) + " are : " + str(words_in_line) + "\n"
+    word_count += words_in_line
+
+print('\n\n ' + str1)
+print('\n\nTotal Number of  words in this file are = ' + str(word_count))
+
+# number of characters
+# and lines in a file
+def counter(fname):
+
+    # variable to store total line count
+    num_lines = 0
+
+    # variable to store total character count
+    num_charc = 0
+
+    # variable to store total space count
+    num_spaces = 0
+    with open("C:\\Users\\Alok Kumar Rathore\\Desktop\\vn2_t06_378_file.txt", 'r') as f:
+
+        # loop to iterate file
+        # line by line
+        for line in f:
+            num_lines += 1
+
+            for letter in line:
+
+                if (letter == ' '):
+
+                    # incrementing the space
+                    # count by 1
+                    num_spaces += 1
+
+                # loop to iterate every
+                # letter character by
+                # character
+                for i in letter:
+
+                    # condition to check
+                    # that the encountered character
+                    # is not white space and not
+                    # a newline character
+                    if (i != " " and i != "\n"):
+                        # incrementing character
+                        # count by 1
+                        num_charc += 1
+
+    # printing total line count
+    print("Number of lines in text file: ",
+          num_lines)
+
+    # printing total character count
+    print('Number of characters in text file: ',
+          num_charc)
+
+
+
+fileHandle = open("C:\\Users\\Alok Kumar Rathore\\Desktop\\vn2_t06_378_file.txt", "r")
+tot = 0
+vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+for char in fileHandle.read():
+    if char>='a' and char<='z':
+        if char not in vowels:
+            tot = tot+1
+    elif char>='A' and char<='Z':
+        if char not in vowels:
+            tot = tot+1
+print("\nThere are " + str(tot) + " Consonants available in the File")
+
+
+# Python program to count number of vowels,
+# newlines and character in textfile
+
+
+# Opening the file in read mode
+txt_file = open("C:\\Users\\Alok Kumar Rathore\\Desktop\\vn2_t06_378_file.txt", "r")
+
+# Initialize three variables to count number of vowels,
+# lines and characters respectively
+vowel = 0
+line = 0
+character = 0
+
+# Make a vowels list so that we can
+# check whether the character is vowel or not
+vowels_list = ['a', 'e', 'i', 'o', 'u',
+                   'A', 'E', 'I', 'O', 'U']
+
+# Iterate over the characters present in file
+for alpha in txt_file.read():
+
+# Checking if the current character is vowel or not
+    if alpha in vowels_list:
+        vowel += 1
+
+        # Checking if the current character is
+        # not vowel or new line character
+    elif alpha not in vowels_list and alpha != "\n":
+        character += 1
+
+# Checking if the current character
+# is new line character or not
+    elif alpha == "\n":
+        line += 1
+
+# Print the desired output on the console.
+print("Number of vowels in ", " ", " = ", vowel)
+
